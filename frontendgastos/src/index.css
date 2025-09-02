@@ -1,0 +1,201 @@
+/* Import de Google Fonts - Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgba(13, 27, 42, 0.7), rgba(13, 27, 42, 0.7)),
+              url('images/fondo.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+#root {
+    width: 100%;
+    padding: 0 0.6rem;
+}
+
+.login-container {
+    background-color: #1B263B; /* Contenedor oscuro */
+    color: #E0E1DD;
+    border-radius: 0.5rem;
+    padding: 2rem 1.5rem;
+    max-width: 410px;
+    margin: 0 auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.login-container .form-title {
+    font-size: 1.37rem;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 1.87rem;
+    color: #E0E1DD;
+}
+
+.login-container .social-login {
+    display: flex;
+    gap: 1.31rem;
+}
+
+.social-login .social-button {
+    display: flex;
+    width: 100%;
+    gap: 0.81rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.75rem 0;
+    align-items: center;
+    border-radius: 0.31rem;
+    justify-content: center;
+    background-color: #243447;
+    border: 1px solid #415A77;
+    color: #E0E1DD;
+    transition: 0.2s ease;
+}
+
+.social-login .social-button .social-icon {
+    width: 23px;
+}
+
+.social-login .social-button:hover {
+    background-color: #2E3F55;
+    border-color: #06D6A0;
+}
+
+.login-container .separator {
+    text-align: center;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.login-container .separator span {
+    position: relative;
+    z-index: 1;
+    background-color: #1B263B;
+    padding: 0 0.9rem;
+    font-size: 1.06rem;
+    font-weight: 500;
+    color: #E0E1DD;
+}
+
+.login-container .separator::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 50%;
+    height: 1px;
+    width: 100%;
+    background-color: #415A77;
+}
+
+.login-form .input-wrapper {
+    height: 54px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.login-form .input-wrapper .input-field {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 1.06rem;
+    border-radius: 0.31rem;
+    border: 1px solid #415A77;
+    background: #243447;
+    color: #E0E1DD;
+    padding: 0 1.25rem 0 3.12rem;
+    transition: 0.2s ease;
+}
+
+.login-form .input-wrapper .input-field::placeholder {
+    color: #A7B1C2;
+}
+
+.login-form .input-wrapper i {
+    color: #A7B1C2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.2s ease;
+}
+
+.login-form .input-wrapper .input-field:focus {
+    border-color: #06D6A0;
+}
+
+.login-form .input-wrapper .input-field:focus ~ i:not(.eye-icon) {
+    color: #06D6A0;
+}
+
+.login-form .input-wrapper i.eye-icon {
+    right: 0.9rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: none;
+}
+
+.login-form .input-wrapper .input-field:valid ~ i.eye-icon {
+    display: block;
+}
+
+.login-form .login-button {
+    width: 100%;
+    height: 54px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #0D1B2A;
+    font-size: 1.125rem;
+    font-weight: 500;
+    background-color: #06D6A0;
+    margin-top: 2.19rem;
+    border-radius: 0.31rem;
+    transition: 0.2s ease;
+}
+
+.login-form .login-button:hover {
+    background-color: #05C292;
+}
+
+.login-container .sigmup-text {
+    text-align: center;
+    font-weight: 500;
+    margin: 1.75rem 0 0.31rem;
+    color: #E0E1DD;
+}
+
+.login-container a {
+    color: #06D6A0;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+.login-form .forgot-pass-link {
+    display: block;
+    width: fit-content;
+    margin: -0.46rem;
+}
+
+.login-form .input-wrapper i:not(.eye-icon) {
+    left: 0.9rem;
+    pointer-events: none;
+}
