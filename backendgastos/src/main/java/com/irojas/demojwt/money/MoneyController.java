@@ -1,9 +1,9 @@
 package com.irojas.demojwt.money;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import com.irojas.demojwt.User.User;
@@ -23,30 +23,29 @@ public class MoneyController {
         this.userRepository = userRepository;
     }
 
-    // Endpoint para obtener el dinero del usuario logueado
+    // Obtener monedas del usuario autenticado
     @GetMapping("/me")
-    public List<Money> getMyMoney(Authentication authentication) {
-        // El nombre del usuario en Authentication es el username/email que pusiste en el JWT
-        String email = authentication.getName();
+    public List<Money> getMyMoney(Principal principal) {
+        if(principal == null) {
+            throw new RuntimeException("Usuario no autenticado");
+        }
+        String email = principal.getName();
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-
+                    .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
         return moneyService.getUserMoney(user.getId());
     }
 
-    // Endpoint para obtener dinero de cualquier usuario (por admin o pruebas)
+    // Endpoints adicionales (admin o pruebas)
     @GetMapping("/{userId}")
     public List<Money> getUserMoney(@PathVariable Integer userId) {
         return moneyService.getUserMoney(userId);
     }
 
-    // Añadir dinero a un usuario
     @PostMapping("/{userId}")
     public Money addMoney(@PathVariable Integer userId, @RequestBody Money money) {
         return moneyService.addMoney(userId, money);
     }
 
-    // Eliminar un registro de dinero
     @DeleteMapping("/{moneyId}")
     public void deleteMoney(@PathVariable Integer moneyId) {
         moneyService.deleteMoney(moneyId);

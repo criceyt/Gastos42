@@ -10,37 +10,38 @@ import "./Dashboard.css";
 
 const Dashboard = () => {
   const [money, setMoney] = useState([]);
+  const [user, setUser] = useState(null);
   const token = localStorage.getItem("token");
-  console.log("TOKEN:", token);
 
+  useEffect(() => {
+    // traer monedas
+    axios
+      .get("http://localhost:8081/money/me", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => setMoney(res.data))
+      .catch((err) => console.error("AXIOS ERROR MONEY:", err));
 
-useEffect(() => {
-  axios
-    .get("http://localhost:8081/money/me", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((res) => {
-      console.log("RESPONSE MONEY:", res.data);
-      setMoney(res.data);
-    })
-    .catch((err) => console.error("AXIOS ERROR:", err));
-}, [token]);
-
+    // traer info usuario
+    axios
+      .get("http://localhost:8081/users/me", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => setUser(res.data))
+      .catch((err) => console.error("AXIOS ERROR USER:", err));
+  }, [token]);
 
   return (
     <div className="dashboard-container d-flex">
       <Sidebar />
       <div className="dashboard-main flex-fill">
-        <Header />
+        <Header money={money} user={user} />
         <div className="dashboard-content">
-          {/* Fila de cards */}
           <div className="cards-row">
             <CardBalance money={money} />
             <CardCrypto money={money} />
             <CardFunds money={money} />
           </div>
-
-          {/* Fila de gráficos */}
           <div className="charts">
             <CardCharts money={money} />
           </div>

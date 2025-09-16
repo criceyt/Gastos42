@@ -54,6 +54,10 @@ public class User implements UserDetails {
         return id; // Spring Security usará el email como username
     }
 
+        public String getFirstname() {
+        return firstname; // Spring Security usará el email como username
+    }
+
 
     @Override
     public boolean isAccountNonLocked() {
