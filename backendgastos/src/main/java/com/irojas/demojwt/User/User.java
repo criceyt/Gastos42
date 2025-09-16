@@ -50,6 +50,9 @@ public class User implements UserDetails {
     public String getUsername() {
         return email; // Spring Security usará el email como username
     }
+    public Integer getId() {
+        return id; // Spring Security usará el email como username
+    }
 
 
     @Override

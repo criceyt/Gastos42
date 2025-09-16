@@ -1,23 +1,20 @@
-import InputField from "./components/InputField";
-import SocialLogin from "./components/SocialLogin";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const App = () => {
-  return(<div className="login-container">
-<h2 className="form-title">Log in with</h2>
-  <SocialLogin />
-<p className="separator"><span>or</span></p>
 
-  <form action="#" className="login-form">
-    <InputField type ="email" placeholder="Email address" icon="mail"/>
-    <InputField type ="password" placeholder="Password" icon="lock" />
-    <a href="#" className="forgot-pass-link">Forgot password?</a>
-
-    <button className="login-button">Log In</button>
-  </form>
-  <p className="signup-text">Don&apos;t have an account? <a href="#" className="signup-link">Signup now</a></p>
-</div>
-  )
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+      </Routes>
+    </Router>
+  );
 }
-
 
 export default App;

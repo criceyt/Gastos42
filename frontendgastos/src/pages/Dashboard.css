@@ -1,0 +1,255 @@
+/* -------------------- Contenedor principal -------------------- */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1e1e2f; /* fondo oscuro general */
+  color: #ffffff;
+}
+
+/* -------------------- Sidebar fija -------------------- */
+.dashboard-container .sidebar {
+  width: 240px;
+  background-color: #1b1c27;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00ffc3;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 15px 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  margin: 5px 10px;
+}
+
+.sidebar li:hover {
+  background-color: #2f2f3f;
+}
+
+.sidebar li.active {
+  background-color: #00b894;
+  color: #fff;
+}
+
+.sidebar a {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  padding: 10px 25px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #2f2f3f;
+}
+
+/* -------------------- Main y Header -------------------- */
+.dashboard-main {
+  margin-left: 240px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #1e1e2f;
+}
+
+/* -------------------- Header -------------------- */
+.dashboard-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #2a2a3f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.header-left h1 {
+  font-size: 1.5rem;
+  color: #00ffc3;
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-saldo {
+  font-weight: 600;
+  color: #00b894;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #00b894;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header-profile:hover {
+  background-color: #00ffc3;
+}
+
+.header-profile img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.header-profile span {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* -------------------- Contenido -------------------- */
+.dashboard-content {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column; /* columna principal */
+  gap: 20px;
+}
+
+/* -------------------- Fila de Cards -------------------- */
+.cards-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: nowrap; /* mantiene siempre las tres cards en una fila */
+}
+
+/* -------------------- Cards -------------------- */
+.card {
+  background-color: #2a2a3f !important;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1 1 0; /* se ajusta proporcionalmente */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #fff !important;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #00ffc3;
+}
+
+.card-value {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #00b894;
+}
+
+
+
+/* -------------------- Charts -------------------- */
+.charts {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* se adapta en pantallas pequeñas */
+}
+
+.chart-doughnut, .chart-bar {
+  flex: 1 1 300px;
+}
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 1200px) {
+  .dashboard-container .sidebar {
+    width: 200px;
+  }
+
+  .dashboard-main {
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboard-container .sidebar {
+    position: relative;
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .dashboard-main {
+    margin-left: 0;
+  }
+
+  .dashboard-content {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header-profile span {
+    display: none;
+  }
+
+  .cards-row {
+    flex-direction: column;
+  }
+
+  .card {
+    flex: 1 1 100%;
+  }
+
+  .charts {
+    flex-direction: column;
+  }
+}

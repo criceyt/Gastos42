@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const InputField = ({ type, placeholder, icon }) => {
+const InputField = ({ type, placeholder, icon, name, value, onChange }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
 
   return (
@@ -10,6 +10,9 @@ const InputField = ({ type, placeholder, icon }) => {
         placeholder={placeholder}
         className="input-field"
         required
+        name={name}        // ← necesario para handleChange
+        value={value}      // ← conecta con el estado
+        onChange={onChange} // ← actualiza estado en cada cambio
       />
       <i className="material-symbols-outlined">{icon}</i>
       {type === 'password' && (
