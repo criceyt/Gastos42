@@ -184,7 +184,67 @@
 }
 
 
+/* -------------------- Formulario -------------------- */
+.finance-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
+.finance-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.finance-form input,
+.finance-form select {
+  padding: 10px 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #44475a;
+  background-color: #1e1e2f;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.finance-form input:focus,
+.finance-form select:focus {
+  outline: none;
+  border-color: #00b894;
+  box-shadow: 0 0 5px #00b894;
+}
+
+.finance-form button {
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #00b894;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.finance-form button:hover {
+  background-color: #00ffc3;
+  color: #000;
+}
+
+.finance-form ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.finance-form p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
 /* -------------------- Charts -------------------- */
 .charts {
   display: flex;

@@ -7,25 +7,13 @@ import {
   Legend,
   CategoryScale,
   LinearScale,
-  BarElement
+  BarElement,
 } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
 
-const CardCharts = ({ money }) => {
-
-const liquid = money
-  .filter(m => m.type?.toUpperCase() === "LIQUID")
-  .reduce((sum, m) => sum + m.amount, 0);
-
-const crypto = money
-  .filter(m => m.type?.toUpperCase() === "CRYPTO")
-  .reduce((sum, m) => sum + m.amount, 0);
-
-const fund = money
-  .filter(m => m.type?.toUpperCase() === "FUND")
-  .reduce((sum, m) => sum + m.amount, 0);
-
+const CardCharts = ({ totals }) => {
+  const { liquid, crypto, fund } = totals;
 
   const doughnutData = {
     labels: ["Cripto", "Fondos", "Líquido"],
@@ -38,11 +26,11 @@ const fund = money
     ],
   };
 
-  // Crecimiento mensual (datos ficticios por ahora)
+  // 🚨 Por ahora el bar chart sigue siendo ficticio
   const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo"];
   const monthlyGrowth = months.map((_, i) => {
-    // Suma de todo tipo de money como ejemplo simple
-    return money.reduce((sum, m) => sum + m.amount * (i + 1) / months.length, 0);
+    // Aquí tendrías que conectar con un endpoint de "histórico"
+    return (crypto + fund + liquid) * ((i + 1) / months.length);
   });
 
   const barData = {

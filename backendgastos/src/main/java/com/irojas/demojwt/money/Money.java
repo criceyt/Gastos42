@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -22,7 +23,7 @@ public class Money {
     private String name;       // Ej: "Euro", "BTC", "Vanguard Fund"
 
     @Column(nullable = false)
-    private Double amount;     
+    private Double amount;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -30,5 +31,13 @@ public class Money {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;         // Usuario propietario del dinero
+    private User user;
+
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
 }
